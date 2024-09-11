@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Threading.Channels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookMyMovie.Controllers
 {
     [Route("api/v1.0/[controller]/")]
     [ApiController]
+    //Authorize]
     public class BookingController : Controller
     {
         private readonly IBookingService _bookingService;
@@ -22,11 +24,12 @@ namespace BookMyMovie.Controllers
         /// </summary>
         /// <param name="booking"></param>
         [HttpPost("NewBooking")]
-        public void CreateBooking(BookingDto booking)
+        public IActionResult CreateBooking(BookingDto booking)
         {
             try
             {
                 _bookingService.CreateBooking(booking);
+                return Ok("Booking created and event published.");
             }
             catch (Exception)
             {

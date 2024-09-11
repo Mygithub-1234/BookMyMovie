@@ -1,5 +1,4 @@
-﻿using BookMyMovie.DB;
-using BookMyMovie.Models;
+﻿using BookMyMovie.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,9 +6,9 @@ namespace BookMyMovie.Repository
 {
     public class MovieRepository : IMovieRepository
     {
-        private readonly MovieDBContext _context;
+        private readonly MovieReserveContext _context;
 
-        public MovieRepository(MovieDBContext context)
+        public MovieRepository(MovieReserveContext context)
         {
             _context = context;
         }

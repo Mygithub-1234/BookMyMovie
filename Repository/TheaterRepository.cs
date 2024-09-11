@@ -1,13 +1,12 @@
-﻿using BookMyMovie.DB;
-using BookMyMovie.Models;
+﻿using BookMyMovie.Models;
 
 namespace BookMyMovie.Repository
 {
     public class TheaterRepository : ITheaterRepository
     {
-        private readonly MovieDBContext _context;
+        private readonly MovieReserveContext _context;
 
-        public TheaterRepository(MovieDBContext context)
+        public TheaterRepository(MovieReserveContext context)
         {
             _context = context;
         }

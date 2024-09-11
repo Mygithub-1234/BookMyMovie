@@ -5,7 +5,7 @@ namespace BookMyMovie.Services
     public interface IAdminService
     {
         IEnumerable<UserDto> GetAllUsers();
-        Db_User? GetUserById(int user);
+        Customer? GetUserById(int user);
         void AddUser(UserDto user);
         void UpdateUser(UserDto user);
         void DeleteUser(int id);

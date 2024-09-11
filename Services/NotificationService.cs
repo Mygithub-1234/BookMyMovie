@@ -1,19 +1,24 @@
-﻿using BookMyMovie.Repository;
+﻿using BookMyMovie.Models;
+using BookMyMovie.Repository;
+using System.Net;
 
 namespace BookMyMovie.Services
 {
-    public class NotificationService : INotificationService
+    public class NotificationService 
     {
-        private readonly INotificationRepository _NotificationRepository;
+        //private readonly INotificationRepository _NotificationRepository;
 
-        public NotificationService(INotificationRepository NotificationRepository)
+        public NotificationService(INotificationRepository NotificationRepository, IEventBus eventBus)
 
         {
-            _NotificationRepository = NotificationRepository;
+            //_NotificationRepository = NotificationRepository;
+            eventBus.Subscribe<BookingDto>(HandleBookingCreated);
         }
-        public void SendNotification()
+
+        private void HandleBookingCreated(BookingDto bookingRequest)
         {
-            _NotificationRepository.SendNotification();
+            // Logic to send notification
+            Console.WriteLine($"Notification sent for booking dated: {bookingRequest.BookingDate}");
         }
     }
 }

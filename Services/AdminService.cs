@@ -24,7 +24,7 @@ namespace BookMyMovie.Services
             throw new NotImplementedException();
         }
 
-        public Db_User? GetUserById(int user)
+        public Customer? GetUserById(int user)
         {
             throw new NotImplementedException();
         }

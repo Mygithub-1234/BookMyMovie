@@ -1,5 +1,6 @@
 ﻿using BookMyMovie.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace BookMyMovie.Controllers
 {
@@ -13,19 +14,20 @@ namespace BookMyMovie.Controllers
             _NotificationService = notificationService;
         }
 
-        [HttpGet]
-        public void SendNotification()
-        {
-            try
-            {
-                _NotificationService.SendNotification();
-            }
-            catch (Exception)
-            {
+        //[HttpGet]
+        //public Task<HttpStatusCode> SendNotification()
+        //{
+        //    try
+        //    {
+        //        var result = _NotificationService.SendNotification();
+        //        return result;
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
 
     }
 }

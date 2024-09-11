@@ -1,7 +1,9 @@
-﻿namespace BookMyMovie.Repository
+﻿using System.Net;
+
+namespace BookMyMovie.Repository
 {
     public interface INotificationRepository
     {
-        Task SendNotification();
+        Task<HttpStatusCode> SendNotification();
     }
 }

@@ -1,47 +1,41 @@
-﻿using BookMyMovie.DB;
-using BookMyMovie.Models;
+﻿using BookMyMovie.Models;
 using System.Text.Json;
 using System.Text;
 using Azure.Messaging.ServiceBus;
 using Newtonsoft.Json;
+using BookMyMovie.Services;
 
 namespace BookMyMovie.Repository
 {
     public class BookingRepository : IBookingRepository
     {
-        private readonly MovieDBContext _context;
+        private readonly MovieReserveContext _context;
         private readonly string _connectionString;
         private readonly string _queueName;
+        private readonly IEventBus _eventBus;
 
-        public BookingRepository(MovieDBContext context, IConfiguration configuration)
+        public BookingRepository(MovieReserveContext context)
         {
             _context = context;
-            _connectionString = configuration.GetSection("ServiceBus:ConnectionString").Value;
-            _queueName = configuration.GetSection("ServiceBus:QueueName").Value;
+          
         }
-        public async Task CreateBookingAndSendEvent(BookingDto booking)
+        public Booking? CreateBookingAndSendEvent(BookingDto booking)
         {
             try
             {
-                var request = new Booking()
+                var BookingRequest = new Booking()
                 {
                     BookingDate = booking.BookingDate,
                     NumberOfTickets = booking.NumberOfTickets,
                     TotalPrice = booking.TotalPrice,
-                    BookingStatus = BookingStatus.Pending,
-                    PaymentStatus = PaymentStatus.Pending
+                    BookingStatus = (int)BookingStatus.Pending,
+                    PaymentStatus = (int)PaymentStatus.Pending
                 };
-                _context.Bookings.Add(request);
+                _context.Bookings.Add(BookingRequest);
                 _context.SaveChanges();
+                return BookingRequest;
 
-                await using var client = new ServiceBusClient(_connectionString);
-                var sender = client.CreateSender(_queueName);
-
-                var messageBody = JsonConvert.SerializeObject(request);
-                var message = new ServiceBusMessage(Encoding.UTF8.GetBytes(messageBody));
-
-                // Send the message
-                await sender.SendMessageAsync(message);
+               // _eventBus.Publish(BookingRequest);
             }
 
             catch (Exception)

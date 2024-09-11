@@ -1,16 +1,18 @@
 ﻿using BookMyMovie.Models;
 using BookMyMovie.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookMyMovie.Controllers
 {
     [Route("api/v1.0/[controller]/")]
     [ApiController]
-    public class MoviesController : ControllerBase
+    //[Authorize]
+    public class MovieController : ControllerBase
     {
         private readonly IMovieService _movieService;
 
-        public MoviesController(IMovieService movieService)
+        public MovieController(IMovieService movieService)
         {
             _movieService = movieService;
         }
@@ -19,6 +21,7 @@ namespace BookMyMovie.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("all")]
+
         public IActionResult GetMovies()
         {
             try

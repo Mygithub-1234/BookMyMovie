@@ -1,22 +1,27 @@
 ﻿using BookMyMovie.Models;
 using BookMyMovie.Repository;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookMyMovie.Services
 {
     public class BookingService : IBookingService
     {
+        private readonly IEventBus _eventBus;
         private readonly IBookingRepository _bookingRepository;
 
-        public BookingService(IBookingRepository bookingRepository)
+        public BookingService(IBookingRepository bookingRepository, IEventBus eventBus)
 
         {
             _bookingRepository = bookingRepository;
+            _eventBus = eventBus;
         }
         public void CreateBooking(BookingDto booking)
         {
             try
             {
-                _bookingRepository.CreateBookingAndSendEvent(booking);
+                var result = _bookingRepository.CreateBookingAndSendEvent(booking);
+                _eventBus.Publish(result);
+
             }
             catch (Exception)
             {

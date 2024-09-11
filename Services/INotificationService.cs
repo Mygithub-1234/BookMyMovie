@@ -1,7 +1,9 @@
-﻿namespace BookMyMovie.Services
+﻿using System.Net;
+
+namespace BookMyMovie.Services
 {
     public interface INotificationService
     {
-        void SendNotification(); 
+       // Task<HttpStatusCode> SendNotification(); 
     }
 }

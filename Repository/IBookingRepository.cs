@@ -1,4 +1,5 @@
 ﻿using BookMyMovie.Models;
+using BookMyMovie.Services;
 
 namespace BookMyMovie.Repository
 {
@@ -6,7 +7,7 @@ namespace BookMyMovie.Repository
     {
         IEnumerable<Booking> GetByUserId(int userId);
         Booking? GetByBookingId(int bookingId);
-        Task CreateBookingAndSendEvent(BookingDto booking);
+        Booking? CreateBookingAndSendEvent(BookingDto booking);
         void UpdateBooking(int bookingId);//cancel or modify
         void DeleteBooking(int bookingId);
     }

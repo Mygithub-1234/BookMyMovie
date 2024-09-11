@@ -1,11 +1,17 @@
-﻿namespace BookMyMovie.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace BookMyMovie.Models;
+
+public partial class Movie
 {
-    public class Movie
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Director { get; set; }
-        public DateTime ReleaseDate { get; set; }
-    }
+    public int Id { get; set; }
+
+    public string? Title { get; set; }
+
+    public string? Description { get; set; }
+
+    public string? Director { get; set; }
+
+    public virtual ICollection<TheaterMovie> TheaterMovies { get; set; } = new List<TheaterMovie>();
 }

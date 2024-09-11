@@ -5,6 +5,12 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMyMovie", "BookMyMovie.csproj", "{C0813966-2EAB-4432-9B53-69ACAB6E0570}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "..\..\DailyProject\OcelotServiceProjects-main\OcelotServiceProjects-main\ApiGateway\ApiGateway.csproj", "{C8221DBA-913C-4E8C-944C-3C5AEA7D4671}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer", "..\..\DailyProject\OcelotServiceProjects-main\OcelotServiceProjects-main\AuthServer\AuthServer.csproj", "{5CC47E43-EC94-450C-A368-BC818B75125D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "..\..\DailyProject\OcelotServiceProjects-main\OcelotServiceProjects-main\UserService\UserService.csproj", "{1C9ACAD3-3CC0-4CF5-8A51-5A28389314E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{C0813966-2EAB-4432-9B53-69ACAB6E0570}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0813966-2EAB-4432-9B53-69ACAB6E0570}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0813966-2EAB-4432-9B53-69ACAB6E0570}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8221DBA-913C-4E8C-944C-3C5AEA7D4671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8221DBA-913C-4E8C-944C-3C5AEA7D4671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8221DBA-913C-4E8C-944C-3C5AEA7D4671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8221DBA-913C-4E8C-944C-3C5AEA7D4671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CC47E43-EC94-450C-A368-BC818B75125D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CC47E43-EC94-450C-A368-BC818B75125D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CC47E43-EC94-450C-A368-BC818B75125D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CC47E43-EC94-450C-A368-BC818B75125D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C9ACAD3-3CC0-4CF5-8A51-5A28389314E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C9ACAD3-3CC0-4CF5-8A51-5A28389314E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C9ACAD3-3CC0-4CF5-8A51-5A28389314E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C9ACAD3-3CC0-4CF5-8A51-5A28389314E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

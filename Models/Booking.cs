@@ -1,39 +1,41 @@
-﻿using System.ComponentModel.DataAnnotations;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System;
+using System.Collections.Generic;
 
-namespace BookMyMovie.Models
+namespace BookMyMovie.Models;
+
+public partial class Booking
 {
-    public class Booking
-    {
-        [Key]
-        
-        public int BookingId { get; set; }
-        public int UserId { get; set; }
+    public int BookingId { get; set; }
 
-        public int NumberOfTickets { get; set; }
+    public int? NumberOfTickets { get; set; }
 
-        public int TotalPrice { get; set; }
+    public int? TotalPrice { get; set; }
 
-        public DateTime BookingDate { get; set; }
-        public BookingStatus BookingStatus { get; set; }
-        public PaymentStatus PaymentStatus { get; set; }
+    public DateTime? BookingDate { get; set; }
 
-        public int Theater_MovieId { get; set; }
+    public int? BookingStatus { get; set; }
 
+    public int? PaymentStatus { get; set; }
 
-    }
-    public enum BookingStatus
-    {
-        Pending = 3,
-        Confirmed = 2,
-        Cancelled = 0,
-        Completed = 1
-    }
+    public int? TheaterMovieId { get; set; }
 
-    public enum PaymentStatus
-    {
-        Pending = 0,
-        Success = 1,
-        Failed = -1
-    }
+    public int? CustId { get; set; }
+
+    public virtual Customer? Cust { get; set; }
+
+    public virtual ICollection<TheaterMovie> TheaterMovies { get; set; } = new List<TheaterMovie>();
+}
+public enum BookingStatus
+{
+    Pending = 3,
+    Confirmed = 2,
+    Cancelled = 0,
+    Completed = 1
+}
+
+public enum PaymentStatus
+{
+    Pending = 0,
+    Success = 1,
+    Failed = -1
 }
